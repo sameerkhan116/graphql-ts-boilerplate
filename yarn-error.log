@@ -33,19 +33,20 @@ npm manifest:
     },
     "dependencies": {
       "bcryptjs": "^2.4.3",
+      "graphql": "^0.13.2",
       "graphql-import": "^0.6.0",
       "graphql-request": "^1.6.0",
+      "graphql-tools": "^3.0.2",
       "graphql-yoga": "^1.14.8",
       "nodemon": "^1.17.5",
       "pg": "^7.4.3",
       "reflect-metadata": "^0.1.12",
-      "typeorm": "0.2.7",
-      "uuid": "^3.2.1"
+      "typeorm": "0.2.7"
     },
     "scripts": {
-      "start": "nodemon --exec ts-node src/index.ts",
+      "start": "NODE_ENV=development nodemon --exec ts-node src/index.ts",
       "gen-schema-types": "gql2ts src/schema.graphql -o src/types/schema.d.ts",
-      "test": "jest"
+      "test": "NODE_ENV=test jest --forceExit"
     },
     "jest": {
       "transform": {
@@ -1936,7 +1937,7 @@ Lockfile:
       graphql-tools "^2.23.1"
       subscriptions-transport-ws "^0.9.8"
   
-  "graphql@>= 0.10 <1.0.0", "graphql@^0.11.0 || ^0.12.0 || ^0.13.0":
+  "graphql@>= 0.10 <1.0.0", "graphql@^0.11.0 || ^0.12.0 || ^0.13.0", graphql@^0.13.2:
     version "0.13.2"
     resolved "https://registry.yarnpkg.com/graphql/-/graphql-0.13.2.tgz#4c740ae3c222823e7004096f832e7b93b2108270"
     dependencies:
@@ -4755,7 +4756,7 @@ Lockfile:
     version "3.1.0"
     resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.1.0.tgz#3dd3d3e790abc24d7b0d3a034ffababe28ebbc04"
   
-  uuid@^3.1.0, uuid@^3.2.1:
+  uuid@^3.1.0:
     version "3.2.1"
     resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.2.1.tgz#12c528bb9d58d0b9265d9a2f6f0fe8be17ff1f14"
   
@@ -5039,7 +5040,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c jest
+  Arguments: -c NODE_ENV=test jest --forceExit
   Directory: /Users/sameerkhan/Desktop/graphql-ts-boilerplate
   Output:
   
