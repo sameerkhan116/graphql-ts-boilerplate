@@ -6,7 +6,7 @@ import { makeExecutableSchema, mergeSchemas } from "graphql-tools";
 
 export const genSchema = () => {
   const schemas: GraphQLSchema[] = [];
-  const folders = fs.readdirSync(path.join(__dirname, "../modules/"));
+  const folders = fs.readdirSync(path.join(__dirname, "../modules"));
   folders.forEach(folder => {
     const { resolvers } = require(`../modules/${folder}/resolvers`);
     const typeDefs = importSchema(
