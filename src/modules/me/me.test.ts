@@ -1,5 +1,4 @@
 import axios from "axios";
-import Redis from "ioredis";
 import { Connection } from "typeorm";
 
 import { User } from "../../entity/User";

@@ -49,7 +49,7 @@
   "scripts": {
     "start": "NODE_ENV=development nodemon --exec ts-node src/index.ts",
     "gen-schema-types": "ts-node src/scripts/createTypes.ts",
-    "test": "NODE_ENV=test SP_API_KEY=8803e749945b70b5603b8d4b3e351c234b21604c jest --watch"
+    "test": "NODE_ENV=test jest --watch --runInBand"
   },
   "jest": {
     "globalSetup": "./src/testSetup/callSetup.js",
