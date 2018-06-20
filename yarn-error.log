@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/Cellar/node/9.11.1/bin/node /usr/local/bin/yarn run gen-schema-types
+  /usr/local/Cellar/node/9.11.1/bin/node /usr/local/bin/yarn gen-schema-types
 
 PATH: 
   /Users/sameerkhan/Desktop/Flutter/flutter/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/Wireshark.app/Contents/MacOS:/Users/sameerkhan/Desktop/Flutter/flutter/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin

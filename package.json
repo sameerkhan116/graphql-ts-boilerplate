@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@gql2ts/from-schema": "^1.8.0",
+    "@types/dotenv": "^4.0.3",
     "@types/express": "^4.16.0",
     "@types/sparkpost": "^2.1.4",
     "bcryptjs": "^2.4.3",
@@ -43,7 +44,7 @@
   "scripts": {
     "start": "NODE_ENV=development nodemon --exec ts-node src/index.ts",
     "gen-schema-types": "ts-node src/scripts/createTypes.ts",
-    "test": "NODE_ENV=test jest --watch"
+    "test": "NODE_ENV=test SP_API_KEY=8803e749945b70b5603b8d4b3e351c234b21604c jest --watch"
   },
   "jest": {
     "globalSetup": "./src/testSetup/callSetup.js",
