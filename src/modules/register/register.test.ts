@@ -1,4 +1,5 @@
 import { request } from "graphql-request";
+import { Connection } from "typeorm";
 
 import { User } from "../../entity/User";
 import {
@@ -9,8 +10,14 @@ import {
 } from "./errorMessages";
 import { createTypeORMConnection } from "../../utils/createTypeORMConnection";
 
+let conn: Connection;
+
 beforeAll(async () => {
-  await createTypeORMConnection();
+  conn = await createTypeORMConnection();
+});
+
+afterAll(async () => {
+  conn.close();
 });
 
 const email = "sophiya@soph.com";

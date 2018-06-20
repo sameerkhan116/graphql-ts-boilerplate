@@ -15,13 +15,11 @@ export const resolvers: ResolverMap = {
     bye2: () => "bye",
   },
   Mutation: {
-    login: async (_, { email, password }) => {
+    login: async (_, { email, password }, { session }) => {
       const user = await User.findOne({ where: { email } });
-
       if (!user) {
         return errorResponse;
       }
-
       if (!user.confirmed) {
         return [
           {
@@ -36,6 +34,8 @@ export const resolvers: ResolverMap = {
       if (!valid) {
         return errorResponse;
       }
+
+      session.userId = user.id;
 
       return null;
     },

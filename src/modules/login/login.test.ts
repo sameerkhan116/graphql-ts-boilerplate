@@ -1,4 +1,6 @@
 import { request } from "graphql-request";
+import { Connection } from "typeorm";
+
 import { User } from "../../entity/User";
 import { createTypeORMConnection } from "../../utils/createTypeORMConnection";
 
@@ -23,8 +25,14 @@ const loginMutation = (e: string, p: string) => `
   }
 `;
 
+let conn: Connection;
+
 beforeAll(async () => {
-  await createTypeORMConnection();
+  conn = await createTypeORMConnection();
+});
+
+afterAll(async () => {
+  conn.close();
 });
 
 const loginExpectError = async (e: string, p: string, errMsg: string) => {
