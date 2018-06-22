@@ -6,9 +6,4 @@ export default async (
   args: any,
   context: any,
   info: any,
-) => {
-  // middleware
-  const result = await resolver(parent, args, context, info);
-  // afterware
-  return result;
-};
+) => resolver(parent, args, context, info);

@@ -1,0 +1,7 @@
+type Query {
+  bye3: String
+}
+
+type Mutation {
+  logout: Boolean!
+}
