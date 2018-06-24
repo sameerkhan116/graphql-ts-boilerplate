@@ -1,0 +1,9 @@
+export const duplicateEmail = "User already exists.";
+export const emailNotLong = "Email must be atleast 3 characters.";
+export const invalidEmail = "Email is not valid.";
+export const passwordNotLong = "Password must be atleast 5 characters.";
+export const confirmEmail = "Please confirm your email.";
+export const lockedAccount = "Account is locked.";
+export const invalidLogin = "Invalid login.";
+export const expiredKey = "The key has already expired.";
+export const noUser = "No user found with that email.";

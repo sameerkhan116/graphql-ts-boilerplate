@@ -3,11 +3,13 @@ import * as bcrypt from "bcryptjs";
 import { User } from "../../entity/User";
 import { ResolverMap } from "../../types/graphql-utils";
 import { userSessionIDPrefix } from "../../constants";
+import { confirmEmail } from "../../routes/confirmEmail";
+import { lockedAccount, invalidLogin } from "../../errorMessages";
 
 const errorResponse = [
   {
     path: "email",
-    message: "Invalid login.",
+    message: invalidLogin,
   },
 ];
 
@@ -26,16 +28,16 @@ export const resolvers: ResolverMap = {
         return [
           {
             path: "email",
-            message: "Please confirm your email.",
+            message: confirmEmail,
           },
         ];
       }
 
-      if (!user.forgotPasswordLocked) {
+      if (user.forgotPasswordLocked) {
         return [
           {
             path: "email",
-            message: "Account is locked.",
+            message: lockedAccount,
           },
         ];
       }
@@ -50,7 +52,6 @@ export const resolvers: ResolverMap = {
       if (req.sessionID) {
         await redis.lpush(`${userSessionIDPrefix}${user.id}`, req.sessionID);
       }
-
       return null;
     },
   },

@@ -3,6 +3,7 @@ import { Connection } from "typeorm";
 import { User } from "../../entity/User";
 import { createTypeORMConnection } from "../../utils/createTypeORMConnection";
 import { TestClient } from "../../utils/testClient";
+import { confirmEmail, invalidLogin } from "../../errorMessages";
 
 const email = "mom@mom.com";
 const password = "masdsjadk";
@@ -36,28 +37,18 @@ const loginExpectError = async (
 };
 
 describe("Login", () => {
-  const client = new TestClient(process.env.TEST_HOST as string);
-
   test("Email not found.", async () => {
-    await loginExpectError(
-      client,
-      "sophiya@soph.com",
-      "sophiya",
-      "Invalid login.",
-    );
+    const client = new TestClient(process.env.TEST_HOST as string);
+    await loginExpectError(client, "sophiya@soph.com", "sophiya", invalidLogin);
   });
 
   test("Email not confirmed.", async () => {
+    const client = new TestClient(process.env.TEST_HOST as string);
     await client.register(email, password);
+    await loginExpectError(client, email, password, confirmEmail);
 
-    await loginExpectError(
-      client,
-      email,
-      password,
-      "Please confirm your email.",
-    );
     await User.update({ email }, { confirmed: true });
-    await loginExpectError(client, email, "aksdjkasj", "Invalid login.");
+    await loginExpectError(client, email, "aksdjkasj", invalidLogin);
 
     const response = await client.login(email, password);
 

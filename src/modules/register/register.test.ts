@@ -6,7 +6,7 @@ import {
   emailNotLong,
   invalidEmail,
   passwordNotLong,
-} from "./errorMessages";
+} from "../../errorMessages";
 import { createTypeORMConnection } from "../../utils/createTypeORMConnection";
 import { TestClient } from "../../utils/testClient";
 
